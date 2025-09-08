@@ -1,0 +1,43 @@
+{
+	"name": "🎙️ Backstage Dev Environment",
+	"dockerComposeFile": "compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"features": {
+		"ghcr.io/devcontainers/features/azure-cli:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
+	"containerEnv": {
+		"POSTGRES_HOST": "db",
+		"POSTGRES_PORT": "5432",
+		"POSTGRES_USER": "postgres",
+		"POSTGRES_PASSWORD": "postgres",
+		"NODE_OPTIONS": "--no-node-snapshot"
+	},
+	"forwardPorts": [
+		3000,
+		7007
+	],
+	"portsAttributes": {
+		"3000": {
+			"label": "Backstage frontend",
+			"onAutoForward": "notify"
+		},
+		"7007": {
+			"label": "Backstage backend",
+			"onAutoForward": "notify"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-ossdata.vscode-postgresql",
+				"redhat.vscode-yaml",
+				"DavidAnson.vscode-markdownlint",
+				"Intility.vscode-backstage",
+				"cweijan.vscode-postgresql-client2"
+			]
+		}
+	}
+}

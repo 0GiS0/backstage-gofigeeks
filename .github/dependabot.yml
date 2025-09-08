@@ -1,0 +1,101 @@
+version: 2
+
+# Dependabot configuration covering all ecosystems in this repo:
+# - npm (Yarn 4 monorepo under /backstage and workspaces)
+# - Docker (backend image and devcontainer)
+# - Dev Containers (template updates)
+# - GitHub Actions (workflows)
+# Docs:
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+# https://containers.dev/guide/dependabot
+
+updates:
+  # GitHub Actions workflows in .github/workflows
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+
+  # npm (Yarn 4) - monorepo root
+  - package-ecosystem: npm
+    directory: "/backstage"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    labels:
+      - dependencies
+    groups:
+      backstage-deps:
+        patterns:
+          - "@backstage/*"
+          - "@backstage-community/*"
+      types:
+        patterns:
+          - "@types/*"
+
+  # npm (Yarn 4) - workspaces
+  - package-ecosystem: npm
+    directory: "/backstage/packages/app"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    labels:
+      - dependencies
+    groups:
+      backstage-deps:
+        patterns:
+          - "@backstage/*"
+          - "@backstage-community/*"
+      types:
+        patterns:
+          - "@types/*"
+
+  - package-ecosystem: npm
+    directory: "/backstage/packages/backend"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    labels:
+      - dependencies
+    groups:
+      backstage-deps:
+        patterns:
+          - "@backstage/*"
+          - "@backstage-community/*"
+      types:
+        patterns:
+          - "@types/*"
+
+  # Example template package (kept current for scaffolder template freshness)
+  - package-ecosystem: npm
+    directory: "/backstage/examples/template/content"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    labels:
+      - dependencies
+    groups:
+      backstage-deps:
+        patterns:
+          - "@backstage/*"
+          - "@backstage-community/*"
+      types:
+        patterns:
+          - "@types/*"
+
+  # Dockerfiles
+  - package-ecosystem: docker
+    directory: "/.devcontainer"
+    schedule:
+      interval: weekly
+
+  - package-ecosystem: docker
+    directory: "/backstage/packages/backend"
+    schedule:
+      interval: weekly
+
+  # Dev Containers templates
+  - package-ecosystem: devcontainers
+    directory: "/"
+    schedule:
+      interval: weekly

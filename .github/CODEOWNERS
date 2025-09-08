@@ -1,0 +1,31 @@
+# CODEOWNERS file for Backstage IDP repository protection
+# This file defines who can approve changes to specific paths in the repository
+
+# Global ownership - platform team has admin access
+* @platform-team
+
+# Backstage configuration files require approval from template approvers
+app-config.yaml @template-approvers
+app-config.*.yaml @template-approvers
+catalog-info.yaml @template-approvers
+
+# Documentation requires approval from template approvers
+docs/ @template-approvers
+*.md @template-approvers
+
+# GitHub configuration files require platform team approval
+.github/ @platform-team
+
+# Security-sensitive files require platform team approval
+.github/workflows/ @platform-team
+Dockerfile @platform-team
+docker-compose.yml @platform-team
+
+# Package files and dependencies require platform team approval
+package.json @platform-team
+package-lock.json @platform-team
+yarn.lock @platform-team
+
+# Backstage plugins and packages require template approvers approval
+packages/ @template-approvers
+plugins/ @template-approvers

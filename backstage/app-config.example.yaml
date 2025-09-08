@@ -1,0 +1,95 @@
+# Example base Backstage configuration (safe to commit)
+#
+# Copy this file to "app-config.yaml" when bootstrapping a new environment and
+# update the placeholders. Secrets should come from environment variables or
+# separate credentials files that are gitignored.
+
+app:
+  title: <YOUR_APP_TITLE>
+  baseUrl: http://localhost:3000
+  listen:
+    host: 0.0.0.0
+
+organization:
+  name: <YOUR_ORGANIZATION_NAME>
+
+backend:
+  # auth:
+  #   keys:
+  #     - secret: ${BACKEND_SECRET}
+  baseUrl: http://localhost:7007
+  listen:
+    port: 7007
+    # host: 127.0.0.1
+  csp:
+    connect-src: ["'self'", "http:", "https:"]
+  cors:
+    origin: http://localhost:3000
+    methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
+    credentials: true
+  database:
+    client: pg
+    connection:
+      host: ${POSTGRES_HOST}
+      port: ${POSTGRES_PORT}
+      user: ${POSTGRES_USER}
+      password: ${POSTGRES_PASSWORD}
+
+integrations:
+  github:
+    - host: github.com
+      apps:
+        - $include: github-app-credentials.yaml
+  # Alternative
+  # github:
+  #   - host: github.com
+  #     token: ${GITHUB_TOKEN}
+
+proxy: {}
+
+techdocs:
+  builder: "local"
+  generator:
+    runIn: "docker"
+  publisher:
+    type: "local"
+
+auth:
+  providers:
+    github:
+      development:
+        clientId: ${GITHUB_APP_CLIENT_ID}
+        clientSecret: ${GITHUB_APP_CLIENT_SECRET}
+        signIn:
+          resolvers:
+            - resolver: usernameMatchingUserEntityName
+
+scaffolder: {}
+
+catalog:
+  providers:
+    githubOrg:
+      - id: <PROVIDER_ID>
+        githubUrl: https://github.com
+        orgs: ["<YOUR_GITHUB_ORG>"]
+        schedule:
+          initialDelay: { seconds: 30 }
+          frequency: { hours: 1 }
+          timeout: { minutes: 50 }
+    github:
+      <YOUR_GITHUB_ORG>:
+        organization: <YOUR_GITHUB_ORG>
+        catalogPath: ./catalog-info.yaml
+        schedule:
+          frequency: { minutes: 30 }
+          timeout: { minutes: 3 }
+  import:
+    entityFilename: catalog-info.yaml
+    pullRequestBranchName: backstage-integration
+  rules:
+    - allow: [System, Domain, Component, API, Resource, Location, Template]
+
+kubernetes: {}
+
+permission:
+  enabled: true

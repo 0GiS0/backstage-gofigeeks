@@ -1,0 +1,77 @@
+# Example local Backstage configuration (safe to commit)
+#
+# Copy this file to "app-config.local.yaml" and replace placeholders with your values
+# or provide them via environment variables. Do NOT commit your real local file.
+
+app:
+  title: Backstage App
+  baseUrl: http://localhost:3000
+  listen:
+    host: 0.0.0.0
+
+organization:
+  name: <YOUR_ORGANIZATION_NAME>
+
+backend:
+  # Enable service-to-service auth in local if needed
+  # auth:
+  #   keys:
+  #     - secret: ${BACKEND_SECRET}
+  baseUrl: http://localhost:7007
+  listen:
+    port: 7007
+    # host: 127.0.0.1
+  csp:
+    connect-src: ["'self'", "http:", "https:"]
+  cors:
+    origin: http://localhost:3000
+    methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
+    credentials: true
+  # Local development database (Postgres). Set these env vars in your shell or devcontainer.
+  database:
+    client: pg
+    connection:
+      host: ${POSTGRES_HOST}
+      port: ${POSTGRES_PORT}
+      user: ${POSTGRES_USER}
+      password: ${POSTGRES_PASSWORD}
+  # workingDirectory: /tmp
+
+integrations:
+  github:
+    - host: github.com
+      apps:
+        - $include: github-app-credentials.yaml
+  # Alternative using a Personal Access Token (PAT):
+  # github:
+  #   - host: github.com
+  #     token: ${GITHUB_TOKEN}
+
+proxy: {}
+
+techdocs:
+  builder: "local"
+  generator:
+    runIn: "docker"
+  publisher:
+    type: "local"
+
+auth:
+  providers:
+    github:
+      development:
+        # OAuth / GitHub App credentials for local sign-in
+        clientId: ${GITHUB_APP_CLIENT_ID}
+        clientSecret: ${GITHUB_APP_CLIENT_SECRET}
+        signIn:
+          resolvers:
+            - resolver: usernameMatchingUserEntityName
+
+scaffolder: {}
+
+# catalog: configure providers/locations in base config; can also be overridden here if needed
+
+kubernetes: {}
+
+permission:
+  enabled: true
