@@ -78,11 +78,9 @@ Our organization provides several template repositories that you can integrate i
 - `backstage-template-node-service` - Node.js services
 - `backstage-template-fastapi-service` - FastAPI/Python services  
 - `backstage-template-dotnet-service` - .NET services
-- `backstage-template-gateway` - API Gateway
 - `backstage-template-ai-assistant` - AI Assistant services
 - `backstage-template-astro-frontend` - Astro frontend applications
-- `backstage-template-helm-base` - Helm charts
-- `backstage-template-env-live` - Environment configurations
+
 
 ### 3. Catalog Discovery
 
