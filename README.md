@@ -56,6 +56,12 @@ Para poder comunicar Backstage con GitHub en este ejemplo se necesita de una Git
 
 Cuando instales la aplicación en la organizavión debes seleccionar: `Acceso a repositorios: All repositories`. Una vez la tengas debes generar una clave privada y esto descargará un certificado, del cual debes copiar el contenido para pegarlo en un archivo llamado `backstage/github-app-credentials.yaml`con la misma estructura que el ejemplo en `backstage/github-app-credentials.yaml`.
 
+También debes configurar:
+
+- Una aplicación OAuth dentro de la organización de Github para poder logarte con los usuarios de la misma y añadir el client id y el client secret en el archivo `backstage/app-config.local.yaml`
+- La sección `catalog`para poder conectarte con tu organización. Hay un ejemplo en `backstage/app-config.yaml`
+
+
 Si quieres saber más sobre Platform Engineering (y Backstage) te recomiendo que eches un vistazo a mi serie:
 
 <a href="https://www.youtube.com/playlist?list=PLO9JpmNAsqM6RttdyDmPyW0vR_zf20ETI">
