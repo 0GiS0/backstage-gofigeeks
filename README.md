@@ -1,131 +1,54 @@
-# 🏗️ GofiGeeksOrg Backstage IDP
+# 🧡 GofiGeeksOrg 🎸 Backstage IDP 💻
 
-Welcome to the **GofiGeeksOrg** Internal Developer Platform (IDP) powered by Backstage!
+<div align="center">
 
-This repository contains the source code and configuration for our organization's Backstage instance, which serves as the central hub for all development activities, documentation, and services.
+[![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UC140iBrEZbOtvxWsJ-Tb0lQ?style=for-the-badge&logo=youtube&logoColor=white&color=red)](https://www.youtube.com/c/GiselaTorres?sub_confirmation=1)
+[![GitHub followers](https://img.shields.io/github/followers/0GiS0?style=for-the-badge&logo=github&logoColor=white)](https://github.com/0GiS0)
+[![LinkedIn Follow](https://img.shields.io/badge/LinkedIn-Sígueme-blue?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/giselatorresbuitrago/)
+[![X Follow](https://img.shields.io/badge/X-Sígueme-black?style=for-the-badge&logo=x&logoColor=white)](https://twitter.com/0GiS0)
 
-## 🎯 What is Backstage?
+</div>
 
-Backstage is an open platform for building developer portals. It helps developers discover and understand all the services and software in your organization, and provides a unified experience for accessing tools, documentation, and templates.
+¡Hola developer 👋🏻! En este repo encontrarás el código que usé durante el evento de GofiGeeks para arrancar una instancia de Backstage.
 
-## 🚀 Getting Started
+<p align="center">
+  <img width="720" height="405" alt="Desarrolladores más felices y productivos con Platform Engineering" src="https://github.com/user-attachments/assets/0c40e173-164b-4833-8ccd-7a3fe1bc2b03" />
+</p>
 
-### Prerequisites
+## 🎯 ¿Qué es Backstage?
 
-Before setting up your local Backstage instance, ensure you have the following installed:
+Backstage es una plataforma abierta para crear portales para desarrolladores. Ayuda a los desarrolladores a descubrir y comprender todos los servicios y el software de tu organización, y proporciona una experiencia unificada para acceder a herramientas, documentación y plantillas.
 
-- **Node.js** (LTS version 18.x or 20.x)
-- **Yarn** package manager
-- **Git**
-- **Docker** (optional, for containerized services)
+## 🚀 ¿Cómo empezar?
 
-### Creating a New Backstage Instance
+La forma más sencilla de poder arrancar este proyecto es abrir el mismo dentro de un dev container, ya que este viene con la configuración para poder tener todo lo que necesitas dentro del mismo. Si no sabes de qué te estoy hablando puedes echar un vistazo a este vídeo de mi canal de YouTube:
 
-Follow the official Backstage documentation to create a new instance:
-
-1. **Create a new Backstage app**:
-   ```bash
-   npx @backstage/create-app@latest
-   ```
-
-2. **Follow the setup wizard** and choose your preferred options
-
-3. **Navigate to your app directory**:
-   ```bash
-   cd my-backstage-app
-   ```
-
-4. **Install dependencies**:
-   ```bash
-   yarn install
-   ```
-
-5. **Start the development server**:
-   ```bash
-   yarn dev
-   ```
-
-6. **Open your browser** and navigate to `http://localhost:3000`
-
-### 📚 Official Documentation
-
-For detailed setup instructions and configuration options, refer to the official Backstage documentation:
-
-- **Getting Started Guide**: https://backstage.io/docs/getting-started/
-- **Configuration**: https://backstage.io/docs/conf/
-- **Plugins**: https://backstage.io/docs/plugins/
-- **Templates**: https://backstage.io/docs/features/software-templates/
-
-## 🔧 Configuration
-
-Once you have your Backstage instance running, you'll need to configure it for the **GofiGeeksOrg** environment:
-
-### 1. GitHub Integration
-
-Configure GitHub integration to access our organization's repositories and templates:
-
-```yaml
-# app-config.yaml
-github:
-  host: github.com
-  token: ${GITHUB_TOKEN}
-```
-
-### 2. Template Repositories
-
-Our organization provides several template repositories that you can integrate into your Backstage instance:
-
-- `backstage-template-node-service` - Node.js services
-- `backstage-template-fastapi-service` - FastAPI/Python services  
-- `backstage-template-dotnet-service` - .NET services
-- `backstage-template-ai-assistant` - AI Assistant services
-- `backstage-template-astro-frontend` - Astro frontend applications
+<a href="https://youtu.be/DkKs29etRis">
+                <img src="https://img.youtube.com/vi/DkKs29etRis/maxresdefault.jpg" alt="⚡🤖 Controla las respuestas de la IA: outputs estructurados 📊 | Cap. 9" width="100%" /></a>
 
 
-### 3. Catalog Discovery
+### Configurar la instancia de Backstage
 
-Configure catalog discovery to automatically find and register services:
+La idea es que esta instancia de Backstage esté conectada con la organización que se configuró [gracias a este otro repo](https://github.com/0GiS0/ghec-org-gofigeeks). Por lo que necesitas la configuración necesaria para poder hacerlo realidad.
 
-```yaml
-# app-config.yaml
-catalog:
-  locations:
-    - type: github-discovery
-      target: https://github.com/GofiGeeksOrg/*/blob/main/catalog-info.yaml
-```
+En el archivo `backstage/app-config.local.example.yaml` tienes un ejemplo de todo lo que necesitas configurar. 
 
-## 🏗️ Architecture
 
-Our Backstage setup follows these principles:
+Para poder comunicar Backstage con GitHub en este ejemplo se necesita de una GitHub App con los permisos necesario. Una vez la tengas, debes añadir el contenido de tu .pem a un archivo `backstage/github-app-credentials.yaml`con la misma estructura que el ejemplo en `backstage/github-app-credentials.yaml`.
 
-- **Single Source of Truth**: All service information centralized in Backstage
-- **Template-Driven Development**: Standardized project templates for consistency
-- **Automated Discovery**: Services automatically registered via catalog discovery
-- **Security First**: Integration with our security tools and policies
+Si quieres saber más sobre Platform Engineering (y Backstage) te recomiendo que eches un vistazo a mi serie:
 
-## 🤝 Contributing
+<a href="https://www.youtube.com/playlist?list=PLO9JpmNAsqM6RttdyDmPyW0vR_zf20ETI">
+<img width="1280" height="720" alt="1  Introducción Platform Engineering" src="https://github.com/user-attachments/assets/5bbdaff4-fab0-46c2-ac61-39364f1db1b1" />
+</a>
 
-1. Fork this repository
-2. Create a feature branch
-3. Make your changes following our coding standards
-4. Test your changes locally
-5. Submit a pull request
 
-## 📞 Support
+### 🎯 ¿Te ha resultado útil este contenido?
 
-For questions or support regarding our Backstage instance:
+**¡La mejor forma de agradecerlo es con una suscripción!** 
 
-- **Platform Team**: Contact the platform team for infrastructure and configuration issues
-- **Template Issues**: Contact template approvers for template-related questions
-- **Security Concerns**: Contact the security team for security-related issues
+Cada nuevo suscriptor me motiva a seguir creando contenido de calidad y mantener estos repositorios actualizados. 
 
-## 📄 License
+[![Suscríbete Ahora](https://img.shields.io/badge/🔔%20SUSCRÍBETE%20AHORA-red?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/c/GiselaTorres?sub_confirmation=1)
 
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
-
-## 🔗 Related Resources
-
-- [Backstage Official Website](https://backstage.io/)
-- [Backstage GitHub Repository](https://github.com/backstage/backstage)
-- [Backstage Community](https://github.com/backstage/community)
-- [GofiGeeksOrg Development Guidelines](./docs/development-guidelines.md)
+¡Nos vemos 👋🏻!
