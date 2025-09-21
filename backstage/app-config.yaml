@@ -87,29 +87,29 @@ auth:
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
 
-catalog:
-  orphanStrategy: delete
-  providers:
-    githubOrg:
-      - id: production
-        githubUrl: https://github.com
-        orgs: ["GofiGeeksOrg"]
-        schedule:
-          initialDelay: { seconds: 30 }
-          frequency: { hours: 1 }
-          timeout: { minutes: 50 }
-    github:    
-      GofiGeeksOrg:
-        organization: GofiGeeksOrg
-        catalogPath: ./catalog-info.yaml
-        schedule:
-          frequency: { minutes: 30 }
-          timeout: { minutes: 3 }
-  import:
-    entityFilename: catalog-info.yaml
-    pullRequestBranchName: backstage-integration
-  rules:
-    - allow: [System, Domain, Component, API, Resource, Location, Template]
+# catalog:
+#   orphanStrategy: delete
+#   providers:
+#     githubOrg:
+#       - id: production
+#         githubUrl: https://github.com
+#         orgs: ["GofiGeeksOrg"]
+#         schedule:
+#           initialDelay: { seconds: 30 }
+#           frequency: { hours: 1 }
+#           timeout: { minutes: 50 }
+#     github:    
+#       GofiGeeksOrg:
+#         organization: GofiGeeksOrg
+#         catalogPath: ./catalog-info.yaml
+#         schedule:
+#           frequency: { minutes: 30 }
+#           timeout: { minutes: 3 }
+#   import:
+#     entityFilename: catalog-info.yaml
+#     pullRequestBranchName: backstage-integration
+#   rules:
+#     - allow: [System, Domain, Component, API, Resource, Location, Template]
   # import:
   #   entityFilename: catalog-info.yaml
   #   pullRequestBranchName: backstage-integration
