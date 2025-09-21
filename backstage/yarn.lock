@@ -10452,9 +10452,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@roadiehq/scaffolder-backend-module-utils@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "@roadiehq/scaffolder-backend-module-utils@npm:4.0.0"
+"@roadiehq/scaffolder-backend-module-utils@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "@roadiehq/scaffolder-backend-module-utils@npm:4.0.3"
   dependencies:
     "@backstage/backend-plugin-api": "npm:^1.4.0"
     "@backstage/config": "npm:^1.3.2"
@@ -10469,7 +10469,7 @@ __metadata:
     yaml: "npm:^2.6.1"
     yawn-yaml: "npm:^2.3.0"
     zod: "npm:^3.19.1"
-  checksum: 10c0/074fb99dace57a275ec63810d7625445b39605eef508c98af025a9a7cb1e0bed9f918c04cf10ed315b01a9f5d630a8d12f7f651e466b1107ecd8fa269391ef39
+  checksum: 10c0/f0835113fdc50d92703bb3c31157c95dd70ede3b2fd7050a5b632f6eddd94c39b1a5962988358b726a7eafc1d8a8d8c08b377aa46ef645c0371d922a9584be98
   languageName: node
   linkType: hard
 
@@ -29224,7 +29224,7 @@ __metadata:
     "@backstage/e2e-test-utils": "npm:^0.1.1"
     "@backstage/plugin-github-actions": "npm:^0.6.16"
     "@playwright/test": "npm:^1.32.3"
-    "@roadiehq/scaffolder-backend-module-utils": "npm:^4.0.0"
+    "@roadiehq/scaffolder-backend-module-utils": "npm:^4.0.3"
     node-gyp: "npm:^10.0.0"
     prettier: "npm:^2.3.2"
     typescript: "npm:~5.8.0"

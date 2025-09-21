@@ -53,6 +53,6 @@
   "packageManager": "yarn@4.4.1",
   "dependencies": {
     "@backstage/plugin-github-actions": "^0.6.16",
-    "@roadiehq/scaffolder-backend-module-utils": "^4.0.0"
+    "@roadiehq/scaffolder-backend-module-utils": "^4.0.3"
   }
 }
