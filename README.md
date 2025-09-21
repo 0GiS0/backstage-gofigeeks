@@ -19,8 +19,14 @@
 
 Backstage es una plataforma abierta para crear portales para desarrolladores. Ayuda a los desarrolladores a descubrir y comprender todos los servicios y el software de tu organización, y proporciona una experiencia unificada para acceder a herramientas, documentación y plantillas.
 
-## 🚀 ¿Cómo empezar?
+## Requisitos
 
+Para poder ejecutar Backstage necesitas:
+
+- Node.js 20
+- Una instancia de Postgress
+- Docker para TechDocs
+  
 La forma más sencilla de poder arrancar este proyecto es abrir el mismo dentro de un dev container, ya que este viene con la configuración para poder tener todo lo que necesitas dentro del mismo. Si no sabes de qué te estoy hablando puedes echar un vistazo a este vídeo de mi canal de YouTube:
 
 <a href="https://youtu.be/DkKs29etRis">
@@ -33,8 +39,22 @@ La idea es que esta instancia de Backstage esté conectada con la organización 
 
 En el archivo `backstage/app-config.local.example.yaml` tienes un ejemplo de todo lo que necesitas configurar. 
 
+Para poder comunicar Backstage con GitHub en este ejemplo se necesita de una GitHub App con los permisos necesario. 
 
-Para poder comunicar Backstage con GitHub en este ejemplo se necesita de una GitHub App con los permisos necesario. Una vez la tengas, debes añadir el contenido de tu .pem a un archivo `backstage/github-app-credentials.yaml`con la misma estructura que el ejemplo en `backstage/github-app-credentials.yaml`.
+#### 🔐 Permisos de la GitHub App (imprescindibles)
+
+- Organización:
+   - Custom properties: Read and write
+- Repositorio:
+   - Actions: Read and write
+   - Administration: Read and write
+   - Code scanning alerts: Read
+   - Contents: Read and write
+   - Custom properties: Read and write 
+   - Metadata: Read
+   - Workflows: Read and write
+
+Cuando instales la aplicación en la organizavión debes seleccionar: `Acceso a repositorios: All repositories`. Una vez la tengas debes generar una clave privada y esto descargará un certificado, del cual debes copiar el contenido para pegarlo en un archivo llamado `backstage/github-app-credentials.yaml`con la misma estructura que el ejemplo en `backstage/github-app-credentials.yaml`.
 
 Si quieres saber más sobre Platform Engineering (y Backstage) te recomiendo que eches un vistazo a mi serie:
 
